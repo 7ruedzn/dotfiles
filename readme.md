@@ -30,7 +30,7 @@ $ stow .
 after that, you can install all the required packages
 
 ```sh
-$ yay -S zsh tmux starship ripgrep zip unzip nvm exa --noconfirm
+$ yay -S zsh tmux starship ripgrep zip unzip nvm exa openssh --noconfirm
 ```
 
 ## Changing default shell
@@ -40,4 +40,11 @@ To change the default shell to zsh, do the following
 ```sh
 $ chsh -s /bin/zsh
 ````
+## Generating ssh key
 
+To generate a public and private key with ssh and rsa, do the following
+
+```sh
+$ ssh-keygen -t rsa
+```
+after the keys creating, add then on the repos you will need
