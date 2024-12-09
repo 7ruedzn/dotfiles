@@ -1,8 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="spaceship"
 
 # SPACESHIP_PROMPT_ORDER=(
@@ -89,8 +86,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git nvm)
-source $ZSH/oh-my-zsh.sh
-
+export EDITOR='nvim'
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -126,6 +122,7 @@ export PATH="$PATH:/mnt/c/WINDOWS"
 alias vim="nvim"
 alias tmuxs="tmux source ~/.config/tmux/tmux.conf"
 alias tmuxc="nvim ~/.config/tmux/tmux.conf"
+alias tmuxi="~/.tmux/plugins/tpm/scripts/install_plugins.sh"
 alias nvimc="cd ~/.config/nvim"
 alias zshc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
@@ -141,6 +138,7 @@ alias precision-medicos="cd ~/projects/HP.Medico.FrontEnd/"
 alias precision-pacientes="cd ~/projects/HP.PortalPaciente.FrontEnd/"
 alias zshcfg="mate ~/.oh-my-zsh"
 alias ls="exa -1 --icons --across --all --git-ignore"
+alias wslr="wsl.exe --shutdown"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"

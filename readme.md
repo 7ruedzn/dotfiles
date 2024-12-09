@@ -40,6 +40,21 @@ To change the default shell to zsh, do the following
 ```sh
 $ chsh -s /bin/zsh
 ````
+
+## Installing TPM
+
+To use plugins with tmux, you will need TPM
+
+```sh
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+then use the alias ```tmuxi``` to install all the provided plugins or use the following
+
+```sh
+$ ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+```
+
 ## Generating ssh key
 
 To generate a public and private key with ssh and rsa, do the following
@@ -47,4 +62,5 @@ To generate a public and private key with ssh and rsa, do the following
 ```sh
 $ ssh-keygen -t rsa
 ```
+
 after the keys creating, add then on the repos you will need
