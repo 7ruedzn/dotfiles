@@ -8,7 +8,7 @@ Ensure you have the following installed on your system
 
 ### Git and Stow
 
-```
+```sh
 pacman -S git stow
 ```
 
@@ -16,13 +16,28 @@ pacman -S git stow
 
 First, check out the dotfiles repo in your $HOME directory using git
 
-```
+```sh
 $ git clone git@github.com/7ruedzn/dotfiles.git
 $ cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
-```
+```sh
 $ stow .
 ```
+
+after that, you can install all the required packages
+
+```sh
+$ yay -S zsh tmux starship ripgrep zip unzip nvm exa --noconfirm
+```
+
+## Changing default shell
+
+To change the default shell to zsh, do the following
+
+```sh
+$ chsh -s /bin/zsh
+````
+

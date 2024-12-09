@@ -15,7 +15,7 @@ for _, lsp in ipairs(servers) do
 end
 
 --Custom workspace diagnostics for ts
-local web_servers = { "tsserver" }
+local web_servers = { "ts_ls" }
 
 for _, lsp in ipairs(web_servers) do
   lspconfig[lsp].setup {
