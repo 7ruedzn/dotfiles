@@ -166,6 +166,8 @@ return {
         "javascript",
         "typescript",
         "tsx",
+        "regex",
+        "bash"
       },
     },
   },
