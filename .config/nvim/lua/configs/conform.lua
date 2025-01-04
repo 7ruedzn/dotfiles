@@ -7,6 +7,7 @@ local options = {
     javascriptreact = { { "prettierd, prettier" } },
     css = { { "prettierd, prettier" } },
     html = { { "prettierd, prettier" } },
+    go = { "gopls" },
     ["_"] = { "trim_whitespace" },
   },
   format_on_save = {
@@ -15,5 +16,4 @@ local options = {
   },
 }
 
-return options
---require("conform").setup(options)
+require("conform").setup(options)
