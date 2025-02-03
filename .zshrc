@@ -2,24 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #ZSH_THEME="spaceship"
 
-# SPACESHIP_PROMPT_ORDER=(
-#     user
-#     dir
-#     host
-#     git
-#     hg
-#     exec_time
-#     line_sep
-#     vi_mode
-#     jobs
-#     exit_code
-#     char
-#   )
-#   SPACESHIP_USER_SHOW=always
-#   SPACESHIP_PROMPT_ADD_NEWLINE=false
-#   SPACESHIP_CHAR_SYMBOL="❯"
-#   SPACESHIP_CHAR_SUFFIX=" "
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -87,36 +69,21 @@
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git nvm)
 export EDITOR='nvim'
-# User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-#
 
 ### Windows PATHS (Add paths that need to be used from windows in $PATH environment)###
 export PATH="$PATH:/mnt/c/Users/vinicius.q.filipe/AppData/Local/Microsoft/WindowsApps"
 export PATH="$PATH:/mnt/c/Users/Vis/vinicius.q.filipe/Local/Programs/Microsoft VS Code/bin"
 export PATH="$PATH:/mnt/c/WINDOWS"
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+# GO PATH
+export PATH="$HOME/go/bin:$PATH"
+
+# STARSHIP CONFIG CUSTOM PATH
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # ALIASES
 alias vim="nvim"
@@ -127,18 +94,16 @@ alias nvimc="cd ~/.config/nvim"
 alias zshc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias hostsc="nvim /mnt/c/Windows/System32/drivers/etc/hosts"
-alias medicos="cd ~/projects/web-resultados-medico/"
+alias medicos="cd ~/projects/HP.Medico.FrontEnd/"
+alias pacientes="cd ~/projects/HP.PortalPaciente.FrontEnd/"
+alias design="cd ~/projects/HP.PrecisionCare.Design/"
 alias passaporte="cd ~/projects/web-passaporte/"
 alias apple-web="cd ~/projects/apple-watch-view/"
 alias apple-api="cd ~/projects/apple-watch-puc-integration/"
 alias desktop="cd ~/mnt/c/Users/vinicius.q.filipe/Desktop/"
 alias downloads="cd /mnt/c/Users/vinicius.q.filipe/Downloads/"
 alias windows="cd /mnt/c/"
-alias precision-medicos="cd ~/projects/HP.Medico.FrontEnd/"
-alias precision-pacientes="cd ~/projects/HP.PortalPaciente.FrontEnd/"
-alias zshcfg="mate ~/.oh-my-zsh"
 alias ls="exa -1 --icons --across --all --git-ignore"
-alias wslr="wsl.exe --shutdown"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -177,3 +142,5 @@ eval "$(starship init zsh)"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+
+. "$HOME/.local/bin/env"
