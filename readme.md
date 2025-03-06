@@ -85,3 +85,9 @@ I've been using *Ghostty*, so install it with the following
 ```bash
 yay -S ghostty-git
 ```
+
+## Browser
+You can install *Zen* with the following
+```bash
+yay -S zen-browser-bin
+```
