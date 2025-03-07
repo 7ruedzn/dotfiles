@@ -142,5 +142,4 @@ eval "$(starship init zsh)"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
-
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
