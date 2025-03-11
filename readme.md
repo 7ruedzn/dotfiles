@@ -125,3 +125,19 @@ spicetify apply
 You can install *Zen* with the following:
 ```bash
 yay -S zen-browser-bin
+```
+## Hyprland
+You can install *hyprland* and it's plugins with the following:
+```bash
+yay -S hyprland-git hyprpicker-git hyprlock-git
+```
+## Fonts
+For fonts, i'm currently using the JetBrains Mono Nerd Font:
+```bash
+yay -S ttf-jetbrains-mono-nerd 3.3.0-1
+```
+## Audio
+To enable to manage audio devices, you can install the following:
+```bash
+yay -S pipewire pipewire-pulse pavucontrol
+```
