@@ -141,3 +141,8 @@ To enable to manage audio devices, you can install the following:
 ```bash
 yay -S pipewire pipewire-pulse pavucontrol
 ```
+## Clipboard
+To be able to use the clipboard with both text and images, install the following:
+```bash
+yay -S cliphist wl-clip-persist
+```

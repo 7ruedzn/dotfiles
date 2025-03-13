@@ -7,8 +7,9 @@
 @define-color activegreen #26A65B;
 
 * {
-  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
+  font-weight: bold;
   border-radius: 0px;
   box-shadow: none;
   text-shadow: none;
@@ -154,8 +155,10 @@ button:hover {
 
 #clock,
 #custom-group {
-  color: @bg;
-  background-color: @maincolor;
+  /* color: @maincolor; */
+  /* background-color: rgba(255, 200, 255, 0.3); */
+  /* background-color: @maincolor; */
+  background-color: transparent;
   margin: 5px;
   padding: 0px 5px;
   border-radius: 5px;
