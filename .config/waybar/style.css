@@ -17,10 +17,10 @@
 
 window#waybar {
   color: @fg;
-  background: @bg;
+  background: alpha(@bg, 0.9);
   transition-property: background-color;
   transition-duration: 0.5s;
-  border: 2px solid @maincolor;
+  /* border: 2px solid @maincolor; */
   border-radius: 10px;
   /* padding: 10px 5px 10px 0px; */
 }
