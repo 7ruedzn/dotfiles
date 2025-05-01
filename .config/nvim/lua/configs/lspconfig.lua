@@ -1,7 +1,6 @@
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 local lspconfig = require "lspconfig"
 local servers = { "html", "cssls" }
@@ -17,13 +16,13 @@ for _, lsp in ipairs(servers) do
 end
 
 -- typescript
- lspconfig.ts_ls.setup {
-    on_attach = function(client, bufnr)
-        require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
-      end,
-   on_init = nvlsp.on_init,
-   capabilities = nvlsp.capabilities,
- }
+lspconfig.ts_ls.setup {
+  on_attach = function(client, bufnr)
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+  end,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
 -- go
 lspconfig.gopls.setup {
@@ -37,8 +36,8 @@ lspconfig.gopls.setup {
       completeUnimported = true,
       usePlaceholders = true,
       analyses = {
-        unusedparams = true
-      }
-    }
-  }
+        unusedparams = true,
+      },
+    },
+  },
 }

@@ -8,7 +8,7 @@ local options = {
     json = { "prettierd", "prettier" },
     css = { "prettierd", "prettier" },
     html = { "prettierd", "prettier" },
-    go = { "gopls" },
+    go = { "gofmt" },
     ["_"] = { "trim_whitespace" },
   },
   format_on_save = {

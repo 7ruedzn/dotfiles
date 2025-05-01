@@ -94,10 +94,10 @@ return {
       require("nvim-surround").setup()
     end,
   },
-  {
-    "github/copilot.vim",
-    event = "VeryLazy",
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "VeryLazy",
+  -- },
   {
     "windwp/nvim-ts-autotag",
     event = "VeryLazy",
@@ -107,13 +107,13 @@ return {
   },
   {
     "OXY2DEV/markview.nvim",
-    lazy = false,      -- Recommended
+    lazy = false, -- Recommended
     -- ft = "markdown" -- If you decide to lazy-load anyway
 
     dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
-    }
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -167,7 +167,7 @@ return {
         "typescript",
         "tsx",
         "regex",
-        "bash"
+        "bash",
       },
     },
   },
