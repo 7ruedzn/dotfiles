@@ -80,7 +80,8 @@ export PATH="$PATH:/mnt/c/WINDOWS"
 export PATH="$PATH:$HOME/.dotnet/tools"
 
 # GO PATH
-export PATH="$HOME/go/bin:$PATH"
+# export PATH="$HOME/go/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 
 # STARSHIP CONFIG CUSTOM PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
