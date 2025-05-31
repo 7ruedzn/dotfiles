@@ -35,7 +35,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 After that, you can install all the required packages
 ```sh
-yay -S zsh tmux starship ripgrep zip unzip less nvm exa fzf jq gvfs openssh zen-browser-bin --noconfirm
+yay -S zsh tmux starship ripgrep zip unzip less nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin --noconfirm
 ```
 
 Install NVM, a NodeJS Version Manager, so you can install other packages later on and also manages the node version on projects
