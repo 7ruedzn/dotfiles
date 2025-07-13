@@ -1,91 +1,59 @@
 # My dotfiles
-
 This directory contains the dotfiles for my arch configuration
-
 ## Requirements
-
 Ensure you have the following installed on your system
-
 ### Git and Stow
-
 ```sh
 pacman -S git stow neovim
 ```
-
 ## Installation
-
-First, check out the dotfiles repo in your $HOME directory using git
-
+### Generating ssh key
+To generate a public and private key with ssh and rsa to clone the repo, do the following
+```sh
+ssh-keygen -t rsa
+```
+after creating the keys, add the public key the your github account.
+### Cloning repo
+Check out the dotfiles repo in your $HOME directory using git
 ```sh
 git clone git@github.com/7ruedzn/dotfiles.git
 cd dotfiles
 ```
-
 then use GNU stow to create symlinks
-
 ```sh
 stow .
 ```
-
 ### Yay (optional)
 If you like AUR helper, make sure to install *yay*:
 ```bash
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
-
 After that, you can install all the required packages
 ```sh
-yay -S zsh tmux starship ripgrep zip unzip less nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin --noconfirm
+yay -S zsh tmux starship waybar ghostty ripgrep zip thunar tumbler rofi unzip less nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin --noconfirm
 ```
-
 Install NVM, a NodeJS Version Manager, so you can install other packages later on and also manages the node version on projects
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
-
 Then install the LTS Node version with `nvm`
 ```bash
 nvm install --lts
 ```
-
 ## Changing default shell
-
 To change the default shell to zsh, do the following
-
 ```sh
 chsh -s /bin/zsh
 ````
-
 ## Installing TPM
-
 To use plugins with tmux, you will need TPM
-
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
-
 then use the alias ```tmuxi``` to install all the provided plugins or use the following
-
 ```sh
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 ```
-
-## Generating ssh key
-
-To generate a public and private key with ssh and rsa, do the following
-
-```sh
-ssh-keygen -t rsa
-```
-
-after the keys creating, add then on the repos you will need
-
-## Terminal
-I've been using *Ghostty*, so install it with the following
-```bash
-yay -S ghostty-git
-```
-
 ## Spotify
 If you need spotify, you can download with the following
 ```bash
@@ -129,7 +97,7 @@ yay -S zen-browser-bin
 ## Hyprland
 You can install *hyprland* and it's plugins with the following:
 ```bash
-yay -S hyprland-git hyprpicker-git hyprlock-git
+yay -S hyprland hyprpicker hyprlock hyprpaper hypridle hyprshot
 ```
 ## Fonts
 For fonts, i'm currently using the JetBrains Mono Nerd Font:
