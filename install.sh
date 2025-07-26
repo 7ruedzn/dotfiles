@@ -46,7 +46,7 @@ yay -S --noconfirm zsh tmux starship waybar ghostty btop ripgrep zip thunar tumb
     steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin \
     wlrobs-hg obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc \
     vlc-plugin-ffmpeg spotify-launcher ttf-jetbrains-mono-nerd pipewire pipewire-pulse pavucontrol \
-    cliphist wl-clip-persist hyprland hyprpicker hyprlock hyprpaper hypridle hyprshot
+    cliphist wl-clip-persist hyprland hyprpicker hyprlock hyprpaper hypridle hyprshot go
 
 # 7. Instalando NVM e Node
 echo "📦 Instalando NVM e Node LTS..."
