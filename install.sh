@@ -58,7 +58,8 @@ clone_dotfiles() {
 
 apply_stow() {
     echo "🔗 Aplicando symlinks com o Stow..."
-    (cd ~/dotfiles && stow . --noadopt)
+    (cd ~/dotfiles && stow --adopt .)
+    (git restore .)
 }
 
 install_aur_helper() {
