@@ -1,6 +1,11 @@
 require "nvchad.options"
 
--- add yours here!
+vim.wo.relativenumber = true
+vim.o.cursorlineopt = "both"
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

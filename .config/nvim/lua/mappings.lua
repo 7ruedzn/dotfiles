@@ -2,7 +2,15 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-vim.wo.relativenumber = true
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -10,6 +18,7 @@ map("i", "jk", "<ESC>")
 -- Setup language servers.
 local lspconfig = require "lspconfig"
 lspconfig.ts_ls.setup {}
+lspconfig.csharp_ls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -54,9 +63,13 @@ map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
+--Toggle float terminal 2
+vim.keymap.set("n", "<A-f>", "<Cmd>FloatermToggle<CR>", { desc = "Toggle float terminal" })
+
 --TELESCOPE
 local telescope_builtin = require "telescope.builtin"
 vim.keymap.set("n", "<space>td", telescope_builtin.diagnostics, { desc = "See diagnostics" }) --See the diagnostics
+vim.keymap.set("n", "<space>tm", telescope_builtin.marks, { desc = "See marks" }) --See the marks
 
 --ZEN mode
 vim.keymap.set("n", "<space>tz", "<Cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
