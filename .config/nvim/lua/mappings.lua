@@ -16,9 +16,9 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- Setup language servers.
-local lspconfig = require "lspconfig"
-lspconfig.ts_ls.setup {}
-lspconfig.csharp_ls.setup {}
+-- local lspconfig = require "lspconfig"
+-- lspconfig.ts_ls.setup {}
+-- lspconfig.csharp_ls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
