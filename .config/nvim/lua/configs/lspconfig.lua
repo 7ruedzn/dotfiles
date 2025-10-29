@@ -20,7 +20,7 @@ local servers = {
       node_modules,
       "--ngProbeLocations",
       node_modules,
-    }
+    },
   },
   html = {},
   cssls = {
@@ -52,7 +52,7 @@ local servers = {
           unusedparams = true,
         },
       },
-    }
+    },
   },
   ts_ls = {
     on_init = nvlsp.on_init,
@@ -69,54 +69,10 @@ local servers = {
     filetypes = { "cs", "csx" },
     root_dir = util.root_pattern("*.sln", "*.csproj", ".git"),
   },
-  json_lsp = {}
+  json_lsp = {},
 }
 
 for name, opts in pairs(servers) do
   vim.lsp.config(name, opts)
   vim.lsp.enable(name)
 end
-
--- local cmd = {
---   "ngserver",
---   "--stdio",
---   "--tsProbeLocations",
---   node_modules,
---   "--ngProbeLocations",
---   node_modules,
--- }
-
--- vim.lsp.config("angularls", {
---   cmd = cmd,
--- })
-
--- vim.lsp.enable "angularls"
-
--- typescript
--- lspconfig.ts_ls.setup {
--- }
-
--- go
--- lspconfig.gopls.setup {
---   on_attach = nvlsp.on_attach,
---   capabilities = nvlsp.capabilities,
---   cmd = { "gopls" },
---   filetypes = { "go", "gomod", "gowork", "gotmpl" },
---   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
---   settings = {
---     gopls = {
---       completeUnimported = true,
---       usePlaceholders = true,
---       analyses = {
---         unusedparams = true,
---       },
---     },
---   },
--- }
-
--- csharp
--- lspconfig.csharp_ls.setup {
--- }
-
---sql
--- vim.lsp.enable "sqlls"

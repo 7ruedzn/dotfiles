@@ -113,18 +113,6 @@ return {
       require("nvim-surround").setup()
     end,
   },
-  -- {
-  --   "github/copilot.vim",
-  --   event = "VeryLazy",
-  -- },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = "InsertEnter",
-  --   cmd = "Copilot",
-  --   config = function()
-  --     require("copilot").setup {}
-  --   end,
-  -- },
   {
     "windwp/nvim-ts-autotag",
     event = "VeryLazy",
@@ -179,24 +167,6 @@ return {
     -- require "configs.custom.live_grep_args"
     -- end
   },
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   event = "VeryLazy",
-  --   config = function ()
-  --
-  --   end
-  -- },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup {
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --     }
-  --   end,
-  -- },
   {
     "nvzone/floaterm",
     dependencies = "nvzone/volt",
@@ -272,12 +242,13 @@ return {
         "lua-language-server",
         "stylua",
         "prettier",
+        "prettierd",
         "angular-language-server",
-        "clangd",
         "typescript-language-server",
         "css-lsp",
         "css-variables-language-server",
         "cssmodules-language-server",
+        "gopls"
       },
     },
   },
@@ -295,6 +266,7 @@ return {
         "tsx",
         "regex",
         "bash",
+        "go",
       },
     },
   },
