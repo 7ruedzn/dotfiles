@@ -77,16 +77,22 @@ export EDITOR='nvim'
 export PATH="$PATH:/mnt/c/Users/vinicius.q.filipe/AppData/Local/Microsoft/WindowsApps"
 export PATH="$PATH:/mnt/c/Users/Vis/vinicius.q.filipe/Local/Programs/Microsoft VS Code/bin"
 export PATH="$PATH:/mnt/c/WINDOWS"
+
+# C#
+# export DOTNET_ROOT=$HOME/.dotnet
+# export PATH=$DOTNET_ROOT:$PATH
 export PATH="$PATH:$HOME/.dotnet/tools"
 
 # GO PATH
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
 
 # STARSHIP CONFIG CUSTOM PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # ALIASES
+alias ls="exa -1 --icons --across --all --git-ignore"
 alias vim="nvim"
+alias nvim-ks='NVIM_APPNAME="nvim-kickstart" nvim'
 alias tmuxs="tmux source ~/.config/tmux/tmux.conf"
 alias tmuxc="nvim ~/.config/tmux/tmux.conf"
 alias tmuxi="~/.tmux/plugins/tpm/scripts/install_plugins.sh"
@@ -97,13 +103,16 @@ alias hostsc="nvim /mnt/c/Windows/System32/drivers/etc/hosts"
 alias medicos="cd ~/projects/HP.Medico.FrontEnd/"
 alias pacientes="cd ~/projects/HP.PortalPaciente.FrontEnd/"
 alias design="cd ~/projects/HP.PrecisionCare.Design/"
+alias strapi="cd ~/projects/HP.PrecisionCare.PerguntasFrequentes.Strapi/"
+alias perguntas="cd ~/projects/HP.Feature.PerguntasFrequentes.FrontEnd/"
+alias plataforma="cd ~/projects/HP.PrecisionCare.FrontEnd/"
 alias passaporte="cd ~/projects/web-passaporte/"
 alias apple-web="cd ~/projects/apple-watch-view/"
 alias apple-api="cd ~/projects/apple-watch-puc-integration/"
 alias desktop="cd ~/mnt/c/Users/vinicius.q.filipe/Desktop/"
 alias downloads="cd /mnt/c/Users/vinicius.q.filipe/Downloads/"
 alias windows="cd /mnt/c/"
-alias ls="exa -1 --icons --across --all --git-ignore"
+alias eventos="cd ~/projects/web-envio-eventos/ && nvim"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
