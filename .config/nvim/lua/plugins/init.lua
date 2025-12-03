@@ -7,12 +7,18 @@ return {
     end,
   },
   {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-     require "configs.harpoon"
-    end
+      require "configs.harpoon"
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -25,12 +31,47 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    }
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search",
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
+    },
   },
   {
     "folke/noice.nvim",
@@ -129,6 +170,15 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
+    opts = {
+      preview = {
+        filetypes = {
+          "codecompanion",
+          "markdown",
+        },
+        ignore_buftypes = {},
+      },
+    },
   },
   -- {
   -- "folke/snacks.nvim",
@@ -173,18 +223,52 @@ return {
     opts = {},
     cmd = "FloatermToggle",
   },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "ravitemer/mcphub.nvim",
+    },
+    config = function()
+      require("codecompanion").setup {
+        extensions = {
+          mcphub = {
+            callback = "mcphub.extensions.codecompanion",
+            opts = {
+              make_vars = true,
+              make_slash_commands = true,
+              show_result_in_chat = true,
+            },
+          },
+        },
+      }
+    end,
+  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "nvim-lua/plenary.nvim", branch = "master" },
+  --   },
+  --   build = "make tiktoken",
+  --   opts = {
+  --     model = "gpt-4.1", -- AI model to use
+  --     temperature = 0.1, -- Lower = focused, higher = creative
+  --     window = {
+  --       layout = "vertical", -- 'vertical', 'horizontal', 'float'
+  --       width = 0.5, -- 50% of screen width
+  --     },
+  --     auto_insert_mode = true, -- Enter insert mode when opening
+  --   },
+  -- },
   -- {
   --   "yetone/avante.nvim",
-  --   build = function()
-  --     if vim.fn.has "win32" == 1 then
-  --       return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-  --     else
-  --       return "make"
-  --     end
-  --   end,
+  --   build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+  --     or "make BUILD_FROM_SOURCE=true",
   --   event = "VeryLazy",
   --   version = false, -- Never set this value to "*"! Never!
   --   opts = {
+  --     instructions_file = "avante.md",
   --     provider = "copilot",
   --     providers = {
   --       copilot = {
@@ -205,7 +289,7 @@ return {
   --     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
   --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
   --     "stevearc/dressing.nvim", -- for input provider dressing
-  --     "folke/snacks.nvim", -- for input provider snacks
+  --     -- "folke/snacks.nvim", -- for input provider snacks
   --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
   --     "zbirenbaum/copilot.lua", -- for providers='copilot'
   --     {
@@ -225,16 +309,27 @@ return {
   --         },
   --       },
   --     },
-  --     {
-  --       -- Make sure to set this up properly if you have lazy=true
-  --       "MeanderingProgrammer/render-markdown.nvim",
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
+  --     -- {
+  --     --   -- Make sure to set this up properly if you have lazy=true
+  --     --   "MeanderingProgrammer/render-markdown.nvim",
+  --     --   opts = {
+  --     --     file_types = { "markdown", "Avante" },
+  --     --   },
+  --     --   ft = { "markdown", "Avante" },
+  --     -- },
   --   },
   -- },
+  {
+    "zbirenbaum/copilot.lua",
+    requires = {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {}
+    end,
+  },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -248,7 +343,7 @@ return {
         "css-lsp",
         "css-variables-language-server",
         "cssmodules-language-server",
-        "gopls"
+        "gopls",
       },
     },
   },

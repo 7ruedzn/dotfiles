@@ -89,6 +89,12 @@ export PATH="$PATH:/usr/local/go/bin"
 # STARSHIP CONFIG CUSTOM PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+# opencode
+export PATH=/home/vinicius/.opencode/bin:$PATH
+
+# context7 MCP
+export CONTEXT7_API_KEY="ctx7sk-ede4d626-05f1-44a9-a487-05464bd0351f"
+
 # ALIASES
 alias ls="exa -1 --icons --across --all --git-ignore"
 alias vim="nvim"
@@ -96,7 +102,8 @@ alias nvim-ks='NVIM_APPNAME="nvim-kickstart" nvim'
 alias tmuxs="tmux source ~/.config/tmux/tmux.conf"
 alias tmuxc="nvim ~/.config/tmux/tmux.conf"
 alias tmuxi="~/.tmux/plugins/tpm/scripts/install_plugins.sh"
-alias nvimc="cd ~/.config/nvim"
+alias nvimc="cd ~/.config/nvim && vim"
+alias lsplog="nvim /home/vinicius/.local/state/nvim/lsp.log"
 alias zshc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias hostsc="nvim /mnt/c/Windows/System32/drivers/etc/hosts"
@@ -148,12 +155,18 @@ export NVM_DIR="$HOME/.nvm"
 # Set up fzf key bindings and fuzzy completion
 # eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 #. "$HOME/.local/bin/env"
 
 export PATH=$PATH:/home/visnicius/.spicetify
+
+# WSL prettierd cache
+export XDG_RUNTIME_DIR="$HOME/.cache/run"
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 700 "$XDG_RUNTIME_DIR"
 
 # Set FZF rose pine moon theme
 export FZF_DEFAULT_OPTS="
@@ -162,3 +175,13 @@ export FZF_DEFAULT_OPTS="
 	--color=border:#44415a,header:#3e8fb0,gutter:#232136
 	--color=spinner:#f6c177,info:#9ccfd8
 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
+# yazi wrapper (alias with y). q to change cwd and Q to stay on the same cwd
+  function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+

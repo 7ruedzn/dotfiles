@@ -1,28 +1,32 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local util = require "lspconfig/util"
 local nvlsp = require "nvchad.configs.lspconfig"
 
---Enable (broadcasting) snippet capability for completion
+-- Habilita snippet support para CSS/SCSS
 local scss_capabilities = vim.lsp.protocol.make_client_capabilities()
 scss_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
---INFO: Get node modules from current project. NEEDS to install the LSP on the web-project
--- with npm i -D @angular/language-server@15.2.1 (version can vary)
-local node_modules = util.path.join(vim.fn.getcwd(), "node_modules")
+-- Helper para encontrar root dir
+local function find_root(patterns)
+  return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
+end
 
 local servers = {
   angularls = {
+    filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" },
+    on_attach = nvlsp.on_attach,
+    capabilities = nvlsp.capabilities,
+    on_init = nvlsp.on_init,
     cmd = {
-      "ngserver",
+      "node",
+      vim.fn.expand "~/projects/web-faturamento/node_modules/@angular/language-server/index.js",
       "--stdio",
       "--tsProbeLocations",
-      node_modules,
+      vim.fn.expand "~/projects/web-faturamento/node_modules",
       "--ngProbeLocations",
-      node_modules,
+      vim.fn.expand "~/projects/web-faturamento/node_modules",
     },
   },
-  html = {},
   cssls = {
     filetypes = { "css", "scss", "less" },
     capabilities = scss_capabilities,
@@ -32,28 +36,22 @@ local servers = {
       less = { validate = true },
     },
   },
-  sql = {
-    filetypes = { "sql" },
-    capabilities = nvlsp.capabilities,
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-  },
+
   gopls = {
     on_attach = nvlsp.on_attach,
     capabilities = nvlsp.capabilities,
     cmd = { "gopls" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    root_dir = find_root { "go.work", "go.mod", ".git" },
     settings = {
       gopls = {
         completeUnimported = true,
         usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
-        },
+        analyses = { unusedparams = true },
       },
     },
   },
+
   ts_ls = {
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
@@ -61,18 +59,51 @@ local servers = {
       require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
     end,
   },
+
+  eslint = {
+    filetypes = { "typescript", "typescriptreact" },
+    root_dir = find_root {
+      ".eslintrc.json",
+      ".eslintrc.js",
+      ".eslintrc",
+      "eslint.config.js",
+      "package.json",
+    },
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+      nvlsp.on_attach(client, bufnr)
+    end,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+    settings = {
+      workingDirectory = { mode = "auto" },
+      validate = "on",
+      packageManager = "yarn",
+      useESLintClass = true,
+      format = false,
+      quiet = false,
+    },
+  },
+
   csharp_ls = {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
     cmd = { "csharp-ls" },
     filetypes = { "cs", "csx" },
-    root_dir = util.root_pattern("*.sln", "*.csproj", ".git"),
+    root_dir = find_root { "*.sln", "*.csproj", ".git" },
   },
-  json_lsp = {},
+
+  jsonls = {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  },
 }
 
 for name, opts in pairs(servers) do
   vim.lsp.config(name, opts)
-  vim.lsp.enable(name)
 end
+
+vim.lsp.enable(vim.tbl_keys(servers))
