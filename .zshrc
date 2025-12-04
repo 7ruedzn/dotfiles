@@ -92,8 +92,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # opencode
 export PATH=/home/vinicius/.opencode/bin:$PATH
 
-# context7 MCP
-export CONTEXT7_API_KEY="ctx7sk-ede4d626-05f1-44a9-a487-05464bd0351f"
 
 # ALIASES
 alias ls="exa -1 --icons --across --all --git-ignore"

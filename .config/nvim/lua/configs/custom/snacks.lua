@@ -53,7 +53,7 @@ local opts = {
   rename = { enabled = true },
   scope = { enabled = true },
   scroll = { enabled = false },
-  statuscolumn = { enabled = true },
+  statuscolumn = { enabled = false },
   words = { enabled = true },
   image = { enabled = true },
 }
@@ -331,7 +331,7 @@ map("n", "gr", function()
   Snacks.picker.lsp_references()
 end, { desc = "References", nowait = true })
 
-map("n", "gI", function()
+map("n", "gi", function()
   Snacks.picker.lsp_implementations()
 end, { desc = "Goto Implementation" })
 
