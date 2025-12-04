@@ -13,7 +13,7 @@ end
 
 local servers = {
   angularls = {
-    filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" },
+    filetypes = { "html", "htmlangular" },
     on_attach = nvlsp.on_attach,
     capabilities = nvlsp.capabilities,
     on_init = nvlsp.on_init,
@@ -53,11 +53,9 @@ local servers = {
   },
 
   ts_ls = {
+    on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
-    on_attach = function(client, bufnr)
-      require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
-    end,
   },
 
   eslint = {
@@ -96,6 +94,12 @@ local servers = {
   },
 
   jsonls = {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  },
+
+  lua_ls = {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,

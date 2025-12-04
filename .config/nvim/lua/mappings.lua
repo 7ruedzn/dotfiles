@@ -20,41 +20,25 @@ map("i", "jk", "<ESC>")
 -- lspconfig.ts_ls.setup {}
 -- lspconfig.csharp_ls.setup {}
 
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+-- Diagnostics navigation
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
+-- LSP mappings complementares ao Snacks
+-- Snacks já cuida de: gd, gD, gr, gI, gy, símbolos LSP
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    -- Hover documentation
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    -- Signature help
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<space>ra", vim.lsp.buf.rename, opts)
-    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<space>f", function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    -- Code actions (Snacks pode não cobrir todas as situações)
+    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code action" })
   end,
 })
 
@@ -66,10 +50,52 @@ end, { desc = "terminal toggle floating term" })
 --Toggle float terminal 2
 vim.keymap.set("n", "<A-f>", "<Cmd>FloatermToggle<CR>", { desc = "Toggle float terminal" })
 
---TELESCOPE
-local telescope_builtin = require "telescope.builtin"
-vim.keymap.set("n", "<space>td", telescope_builtin.diagnostics, { desc = "See diagnostics" }) --See the diagnostics
-vim.keymap.set("n", "<space>tm", telescope_builtin.marks, { desc = "See marks" }) --See the marks
-
 --ZEN mode
 vim.keymap.set("n", "<space>tz", "<Cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
+
+-- Sobrescreve mapeamentos do NvChad para usar Snacks
+-- Precisa estar aqui porque mappings.lua carrega depois dos plugins
+vim.schedule(function()
+  local Snacks = require "snacks"
+  
+  -- Find commands (sobrescreve Telescope do NvChad)
+  map("n", "<leader>fa", function()
+    Snacks.picker.smart()
+  end, { desc = "Find All Files" })
+  
+  map("n", "<leader>ff", function()
+    Snacks.picker.files()
+  end, { desc = "Find Files" })
+  
+  map("n", "<leader>fw", function()
+    Snacks.picker.grep_word()
+  end, { desc = "Find Word" })
+  
+  map("n", "<leader>fz", function()
+    Snacks.picker.grep()
+  end, { desc = "Find in Files (live grep)" })
+  
+  map("n", "<leader>fo", function()
+    Snacks.picker.recent()
+  end, { desc = "Find Old Files (recent)" })
+  
+  map("n", "<leader>fh", function()
+    Snacks.picker.help()
+  end, { desc = "Find Help Pages" })
+  
+  map("n", "<leader>fb", function()
+    Snacks.picker.buffers()
+  end, { desc = "Buffers" })
+  
+  map("n", "<leader>ma", function()
+    Snacks.picker.marks()
+  end, { desc = "Marks" })
+  
+  map("n", "<leader>cm", function()
+    Snacks.picker.commands()
+  end, { desc = "Commands" })
+  
+  map("n", "<leader>pt", function()
+    Snacks.picker.colorschemes()
+  end, { desc = "Pick Theme" })
+end)

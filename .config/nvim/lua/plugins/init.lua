@@ -7,6 +7,14 @@ return {
     end,
   },
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require "configs.custom.snacks"
+    end,
+  },
+  {
     "nvzone/typr",
     dependencies = "nvzone/volt",
     opts = {},
@@ -76,16 +84,8 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
     },
     config = function()
       require "configs.custom.noice"
@@ -181,42 +181,20 @@ return {
     },
   },
   -- {
-  -- "folke/snacks.nvim",
-  -- priority = 1000,
-  -- lazy = false,
-  -- ---@type snacks.Config
-  -- opts = {
-  --   -- your configuration comes here
-  --   -- or leave it empty to use the default settings
-  --   -- refer to the configuration section below
-  --   bigfile = { enabled = true },
-  --   dashboard = { enabled = true },
-  --   explorer = { enabled = true },
-  --   indent = { enabled = true },
-  --   input = { enabled = true },
-  --   picker = { enabled = true },
-  --   notifier = { enabled = true },
-  --   quickfile = { enabled = true },
-  --   scope = { enabled = true },
-  --   scroll = { enabled = true },
-  --   statuscolumn = { enabled = true },
-  --   words = { enabled = true },
+  -- "nvim-telescope/telescope.nvim",
+  -- dependencies = {
+  --   {
+  -- "nvim-telescope/telescope-live-grep-args.nvim",
+  -- This will not install any breaking changes.
+  -- For major updates, this must be adjusted manually.
+  -- version = "^1.0.0",
   -- },
-  {
-    "nvim-telescope/telescope.nvim",
-    -- dependencies = {
-    --   {
-    -- "nvim-telescope/telescope-live-grep-args.nvim",
-    -- This will not install any breaking changes.
-    -- For major updates, this must be adjusted manually.
-    -- version = "^1.0.0",
-    -- },
-    -- },
-    -- config = function()
-    -- require("telescope").load_extension("live_grep_args")
-    -- require "configs.custom.live_grep_args"
-    -- end
-  },
+  -- },
+  -- config = function()
+  -- require("telescope").load_extension("live_grep_args")
+  -- require "configs.custom.live_grep_args"
+  -- end
+  -- },
   {
     "nvzone/floaterm",
     dependencies = "nvzone/volt",
@@ -243,91 +221,6 @@ return {
           },
         },
       }
-    end,
-  },
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   dependencies = {
-  --     { "nvim-lua/plenary.nvim", branch = "master" },
-  --   },
-  --   build = "make tiktoken",
-  --   opts = {
-  --     model = "gpt-4.1", -- AI model to use
-  --     temperature = 0.1, -- Lower = focused, higher = creative
-  --     window = {
-  --       layout = "vertical", -- 'vertical', 'horizontal', 'float'
-  --       width = 0.5, -- 50% of screen width
-  --     },
-  --     auto_insert_mode = true, -- Enter insert mode when opening
-  --   },
-  -- },
-  -- {
-  --   "yetone/avante.nvim",
-  --   build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-  --     or "make BUILD_FROM_SOURCE=true",
-  --   event = "VeryLazy",
-  --   version = false, -- Never set this value to "*"! Never!
-  --   opts = {
-  --     instructions_file = "avante.md",
-  --     provider = "copilot",
-  --     providers = {
-  --       copilot = {
-  --         endpoint = "https://api.github.com",
-  --         model = "gpt-4",
-  --         proxy = nil,
-  --         allow_insecure = false,
-  --         timeout = 30000,
-  --       },
-  --     },
-  --   },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     --- The below dependencies are optional,
-  --     -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
-  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-  --     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-  --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
-  --     "stevearc/dressing.nvim", -- for input provider dressing
-  --     -- "folke/snacks.nvim", -- for input provider snacks
-  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua", -- for providers='copilot'
-  --     {
-  --       -- support for image pasting
-  --       "HakonHarnes/img-clip.nvim",
-  --       event = "VeryLazy",
-  --       opts = {
-  --         -- recommended settings
-  --         default = {
-  --           embed_image_as_base64 = false,
-  --           prompt_for_file_name = false,
-  --           drag_and_drop = {
-  --             insert_mode = true,
-  --           },
-  --           -- required for Windows users
-  --           use_absolute_path = false,
-  --         },
-  --       },
-  --     },
-  --     -- {
-  --     --   -- Make sure to set this up properly if you have lazy=true
-  --     --   "MeanderingProgrammer/render-markdown.nvim",
-  --     --   opts = {
-  --     --     file_types = { "markdown", "Avante" },
-  --     --   },
-  --     --   ft = { "markdown", "Avante" },
-  --     -- },
-  --   },
-  -- },
-  {
-    "zbirenbaum/copilot.lua",
-    requires = {
-      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-    },
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup {}
     end,
   },
   {
