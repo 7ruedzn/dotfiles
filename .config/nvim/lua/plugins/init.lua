@@ -1,5 +1,9 @@
 return {
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     config = function()
@@ -231,8 +235,6 @@ return {
         "stylua",
         "prettier",
         "prettierd",
-        "angular-language-server",
-        "typescript-language-server",
         "css-lsp",
         "css-variables-language-server",
         "cssmodules-language-server",

@@ -67,9 +67,7 @@ local function setup()
     end
   end
 
-  -- Se não encontrou ngserver, retorna nil para desabilitar
   if not ngserver_cmd then
-    vim.notify("angularls: ngserver not found. Install @angular/language-server", vim.log.levels.WARN)
     return nil
   end
 

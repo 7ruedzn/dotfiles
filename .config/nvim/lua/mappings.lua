@@ -35,8 +35,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { buffer = ev.buf }
     -- Hover documentation
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    -- Signature help
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    -- Signature help (alterado de <C-k> para <leader>k para evitar conflito com tmux-navigator)
+    vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
     -- Code actions (Snacks pode não cobrir todas as situações)
     vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code action" })
   end,
@@ -99,3 +99,12 @@ vim.schedule(function()
     Snacks.picker.colorschemes()
   end, { desc = "Pick Theme" })
 end)
+
+-- Tmux Navigator: Sobrescreve os mapeamentos do NvChad para usar integração com tmux
+-- NvChad define <C-h/j/k/l> como navegação simples de janelas (<C-w>h/j/k/l>)
+-- Aqui redefinimos para usar os comandos do vim-tmux-navigator que integram com tmux
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Navigate Left (tmux-aware)" })
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Navigate Down (tmux-aware)" })
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Navigate Up (tmux-aware)" })
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate Right (tmux-aware)" })
+map("n", "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", { desc = "Navigate Previous (tmux-aware)" })
