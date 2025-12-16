@@ -123,6 +123,18 @@ local servers = {
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   },
+
+  somesass_ls = {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  },
+
+  css_variables = {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  },
 }
 
 for name, opts in pairs(servers) do

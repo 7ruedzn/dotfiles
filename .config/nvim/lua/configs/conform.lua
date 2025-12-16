@@ -9,6 +9,7 @@ local options = {
     css = { "prettierd", "prettier", stop_after_first = true },
     scss = { "prettierd", "prettier", stop_after_first = true },
     html = { "prettierd", "prettier", stop_after_first = true },
+    htmlangular = { "prettierd", "prettier", stop_after_first = true },
     -- go = { "gopls" },
     sql = { "sqlfmt" },
     ["_"] = { "trim_whitespace" },
