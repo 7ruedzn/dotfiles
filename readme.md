@@ -30,7 +30,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ```
 After that, you can install all the required packages
 ```sh
-yay -S zsh tmux starship waybar ghostty btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin wlrobs-hg obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg  --noconfirm
+yay -S zsh tmux starship waybar ghostty hyprshot hyprlock hypridle hyprpaper hyprpicker  cliphist wl-clip-persist btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin wlrobs-hg obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg ttf-jetbrains-mono-nerd 3.3.0-1 --noconfirm
 ```
 Install NVM, a NodeJS Version Manager, so you can install other packages later on and also manages the node version on projects
 ```bash
@@ -89,28 +89,13 @@ Apply your changes:
 ```bash
 spicetify apply
 ```
-## Browser
-You can install *Zen* with the following:
-```bash
-yay -S zen-browser-bin
-```
-## Hyprland
-You can install *hyprland* and it's plugins with the following:
-```bash
-yay -S hyprland hyprpicker hyprlock hyprpaper hypridle hyprshot
-```
-## Fonts
-For fonts, i'm currently using the JetBrains Mono Nerd Font:
-```bash
-yay -S ttf-jetbrains-mono-nerd 3.3.0-1
-```
 ## Audio
 To enable to manage audio devices, you can install the following:
 ```bash
 yay -S pipewire pipewire-pulse pavucontrol
 ```
-## Clipboard
-To be able to use the clipboard with both text and images, install the following:
+## Nvidia
+These are the legacy drivers for my GTX 960:
 ```bash
-yay -S cliphist wl-clip-persist
+yay -S nvidia-580xx-dkms nvidia-580xx-utils lib32-nvidia-580xx-utils
 ```
