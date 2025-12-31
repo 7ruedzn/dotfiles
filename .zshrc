@@ -92,7 +92,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # opencode
 export PATH=/home/vinicius/.opencode/bin:$PATH
 
-
 # ALIASES
 alias ls="exa -1 --icons --across --all --git-ignore"
 alias vim="nvim"
@@ -118,6 +117,7 @@ alias desktop="cd ~/mnt/c/Users/vinicius.q.filipe/Desktop/"
 alias downloads="cd /mnt/c/Users/vinicius.q.filipe/Downloads/"
 alias windows="cd /mnt/c/"
 alias eventos="cd ~/projects/web-envio-eventos/ && nvim"
+alias prettierd-reset="pkill -9 -f prettierd; rm -rf ~/.cache/run/.prettierd && echo 'prettierd resetado com sucesso'"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -182,4 +182,3 @@ export FZF_DEFAULT_OPTS="
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
