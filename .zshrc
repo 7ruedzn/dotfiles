@@ -1,6 +1,10 @@
 plugins=(git nvm)
 export EDITOR='nvim'
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$PATH:/mnt/c/Users/vinicius.q.filipe/AppData/Local/Microsoft/WindowsApps"
 export PATH="$PATH:/mnt/c/Users/Vis/vinicius.q.filipe/Local/Programs/Microsoft VS Code/bin"
 export PATH="$PATH:/mnt/c/WINDOWS"
@@ -8,6 +12,10 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH=$PATH:/home/visnicius/.spicetify
 export PATH=/home/vinicius/.opencode/bin:$PATH
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 alias ls="exa -1 --icons --across --all --git-ignore"
 alias vim="nvim"
@@ -84,13 +92,13 @@ chpwd() {
   ls
 }
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 # bun completions
 [ -s "/home/vinicius/.bun/_bun" ] && source "/home/vinicius/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/visnicius/.bun/_bun" ] && source "/home/visnicius/.bun/_bun"
+
