@@ -135,6 +135,13 @@ local servers = {
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   },
+
+  bashls = {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+    filetypes = { "bash", "sh", "zshrc" },
+  },
 }
 
 for name, opts in pairs(servers) do

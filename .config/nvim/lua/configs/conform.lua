@@ -12,10 +12,11 @@ local options = {
     htmlangular = { "prettierd", "prettier", stop_after_first = true },
     -- go = { "gopls" },
     sql = { "sqlfmt" },
+    bash = { "beautysh" },
     ["_"] = { "trim_whitespace" },
   },
   format_on_save = {
-    timeout_ms = 3000,
+    timeout_ms = 5000,
     lsp_fallback = true,
   },
 }
