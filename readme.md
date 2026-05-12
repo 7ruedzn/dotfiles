@@ -99,3 +99,19 @@ These are the legacy drivers for my GTX 960:
 ```bash
 yay -S nvidia-580xx-dkms nvidia-580xx-utils lib32-nvidia-580xx-utils
 ```
+
+## Locale
+To enable locale with special characters, do the following:
+```sh
+sudo nvim /etc/locale.gen
+```
+
+Uncomment the line:
+
+en_US.UTF-8 UTF-8
+
+Run this command:
+
+```sh
+sudo locale-gen
+```
