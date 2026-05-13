@@ -30,7 +30,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ```
 After that, you can install all the required packages
 ```sh
-yay -S zsh tmux starship waybar zoxide ghostty hyprshot hyprlock hypridle hyprpaper hyprpicker cliphist wl-clip-persist btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs wlrobs-hg obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg ttf-jetbrains-mono-nerd 3.3.0-1 --noconfirm
+yay -S zsh tmux starship waybar zoxide ghostty hyprshot hyprlock hypridle hyprpaper hyprpicker cliphist wl-clip-persist btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs wlrobs-hg gnome-keyring obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg ttf-jetbrains-mono-nerd 3.3.0-1 --noconfirm
 ```
 Install NVM, a NodeJS Version Manager, so you can install other packages later on and also manages the node version on projects
 ```bash
