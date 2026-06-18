@@ -4,7 +4,7 @@ This directory contains the dotfiles for my arch configuration
 Ensure you have the following installed on your system
 ### Git and Stow
 ```sh
-pacman -S git stow neovim
+sudo pacman -S git stow neovim openssh
 ```
 ## Installation
 ### Generating ssh key
@@ -16,7 +16,7 @@ after creating the keys, add the public key the your github account.
 ### Cloning repo
 Check out the dotfiles repo in your $HOME directory using git
 ```sh
-git clone git@github.com/7ruedzn/dotfiles.git
+git clone git@github.com:7ruedzn/dotfiles.git
 cd dotfiles
 ```
 then use GNU stow to create symlinks
@@ -30,7 +30,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ```
 After that, you can install all the required packages
 ```sh
-yay -S zsh tmux starship waybar ghostty hyprshot hyprlock hypridle hyprpaper hyprpicker  cliphist wl-clip-persist btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs openssh zen-browser-bin wlrobs-hg obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg ttf-jetbrains-mono-nerd 3.3.0-1 --noconfirm
+yay -S zsh tmux starship waybar zoxide ghostty hyprshot hyprlock hypridle hyprpaper hyprpicker cliphist wl-clip-persist btop ripgrep zip thunar tumbler rofi unzip less steam discord gnome-disk-utility nvm exa fzf jq gvfs pdfjs wlrobs-hg gnome-keyring obs-studio wireplumber xdg-desktop-portal-hyprland blueberry udiskie vlc vlc-plugin-ffmpeg ttf-jetbrains-mono-nerd 3.3.0-1 --noconfirm
 ```
 Install NVM, a NodeJS Version Manager, so you can install other packages later on and also manages the node version on projects
 ```bash
@@ -98,4 +98,20 @@ yay -S pipewire pipewire-pulse pavucontrol
 These are the legacy drivers for my GTX 960:
 ```bash
 yay -S nvidia-580xx-dkms nvidia-580xx-utils lib32-nvidia-580xx-utils
+```
+
+## Locale
+To enable locale with special characters, do the following:
+```sh
+sudo nvim /etc/locale.gen
+```
+
+Uncomment the line:
+
+en_US.UTF-8 UTF-8
+
+Run this command:
+
+```sh
+sudo locale-gen
 ```
