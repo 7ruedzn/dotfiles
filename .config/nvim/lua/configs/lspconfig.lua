@@ -1,7 +1,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local nvlsp = require "nvchad.configs.lspconfig"
-local angular_ls_setup = require("configs.custom.lsp.angularls").setup()
+local angular_ls_opts = require "configs.custom.lsp.angularls"
 
 -- Habilita snippet support para CSS/SCSS
 local scss_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -13,7 +13,7 @@ local function find_root(patterns)
 end
 
 local servers = {
-  angularls = angular_ls_setup,
+  angularls = angular_ls_opts,
   ts_ls = {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
@@ -144,16 +144,15 @@ local servers = {
   },
 }
 
-for name, opts in pairs(servers) do
-  if opts then
-    vim.lsp.config(name, opts)
-  end
-end
-
 local enabled_servers = {}
 for name, opts in pairs(servers) do
   if opts then
-    table.insert(enabled_servers, name)
+    local ok, err = pcall(vim.lsp.config, name, opts)
+    if ok then
+      table.insert(enabled_servers, name)
+    else
+      vim.notify("[lsp] Falha ao configurar " .. name .. ": " .. tostring(err), vim.log.levels.WARN)
+    end
   end
 end
 vim.lsp.enable(enabled_servers)

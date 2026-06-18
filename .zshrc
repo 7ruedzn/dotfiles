@@ -16,6 +16,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH="$BUN_INSTALL/bin:$PATH"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 alias ls="exa -1 --icons --across --all --git-ignore"
 alias vim="nvim"
@@ -25,8 +27,8 @@ alias tmuxc="nvim ~/.tmux.conf"
 alias tmuxi="~/.tmux/plugins/tpm/scripts/install_plugins.sh"
 alias nvimc="cd ~/.config/nvim && vim"
 alias lsplog="nvim /home/vinicius/.local/state/nvim/lsp.log"
-alias zshc="nvim ~/.zshrc"
-alias zshs="source ~/.zshrc"
+alias zc="nvim ~/.zshrc"
+alias zs="source ~/.zshrc"
 alias hostsc="nvim /mnt/c/Windows/System32/drivers/etc/hosts"
 alias medicos="cd ~/projects/HP.Medico.FrontEnd/"
 alias pacientes="cd ~/projects/HP.PortalPaciente.FrontEnd/"
@@ -42,6 +44,8 @@ alias downloads="cd /mnt/c/Users/vinicius.q.filipe/Downloads/"
 alias windows="cd /mnt/c/"
 alias eventos="cd ~/projects/web-envio-eventos/ && nvim"
 alias prettierd-reset="pkill -9 -f prettierd; rm -rf ~/.cache/run/.prettierd && echo 'prettierd resetado com sucesso'"
+alias o="opencode"
+alias g="lazygit"
 
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -89,7 +93,15 @@ export FZF_DEFAULT_OPTS="
 
 # HOOKS
 chpwd() {
-  ls
+  ls # Executa o seu ls automático
+
+  # Auto nvm use simplificado
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ "$(nvm version)" != "$(nvm version default)" ]]; then
+    echo "Voltando para a versão padrão do Node..."
+    nvm use default
+  fi
 }
 
 # bun completions
@@ -102,3 +114,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "/home/visnicius/.bun/_bun" ] && source "/home/visnicius/.bun/_bun"
 
+# Created by `pipx` on 2026-05-13 17:38:11
+export PATH="$PATH:/home/vinicius/.local/bin"
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
